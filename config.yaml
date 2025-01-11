@@ -1,0 +1,6 @@
+model_name_or_path: "google/mt5-base"
+input_language: "en"
+target_language: "zh"
+run_name: "mt5-base"
+training_strategy: "fine-tuning"
+dataset_name: "tatoeba"
