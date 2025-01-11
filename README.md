@@ -15,7 +15,7 @@
 1. You need to download the dataset yourself. The dataset used is Tatoeba.
 2. Set up the environment:
     ```bash
-    cd final
+    cd NLPFinalProject-main
     pip install -r requirements.txt
     pip install -e peft
     ```
