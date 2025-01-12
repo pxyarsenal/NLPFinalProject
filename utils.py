@@ -25,18 +25,6 @@ from accelerate import Accelerator
 from typing import Tuple, List, Dict
 import wandb
 
-def get_record_gradient_hook(model, record_dict):
-    def record_gradient_hook(grad):
-        for n, p in model.named_parameters():
-            if p.requires_grad and p.grad is not None:
-                if n not in record_dict:
-                    record_dict[n] = p.grad.cpu()
-                else:
-                    record_dict[n] += p.grad.cpu()
-                p.grad = None
-        return grad
-
-    return record_gradient_hook
 
 def collate_fn_with_cuda(batch):
     device = torch.device("cuda" if torch.cuda.is_available() else "cpu")
@@ -47,39 +35,6 @@ def collate_fn_with_cuda(batch):
     else:
         return torch.stack(batch).to(device)
 
-
-# def estimate_gradient(
-#     model, dataset, batch_size: int = 4
-# ) -> Dict[str, List[torch.Tensor]]:
-#     r"""
-#     Estimate the gradient of the model on the given dataset
-#     """
-#     log.info("Estimating gradient")
-#     print(model)
-#     model.train()
-#     named_grads = {}
-#     hooks = []
-#     for name, param in model.named_parameters():
-#         hook = param.register_hook(get_record_gradient_hook(model, named_grads))
-#         hooks.append(hook)
-#     dataloader = torch.utils.data.DataLoader(dataset, batch_size=batch_size)
-#     num = 0
-#     for batch in tqdm(dataloader, desc="Estimating gradient"):
-#         num += 1
-#         batch = {k: v.to(model.device) for k, v in batch.items()}
-#         outputs = model(**batch)
-#         outputs.loss.backward()
-#         get_record_gradient_hook(model, named_grads)(None)  # get gradient of last layer
-#         # make sure the gradient is cleared
-#         for n, p in model.named_parameters():
-#             if p.grad is not None:
-#                 p.grad = None
-#     for n, g in named_grads.items():
-#         named_grads[n] /= num
-#     for hook in hooks:
-#         hook.remove()
-#     torch.cuda.empty_cache()
-#     return named_grads
 
 def initialize_model(
     model_name:str
