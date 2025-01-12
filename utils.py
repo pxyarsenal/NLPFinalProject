@@ -73,7 +73,7 @@ def train_text_to_text_model(
 
     eval_steps = 10000
     base_path = os.path.dirname(__file__)
-    output_dir = os.path.join(base_path,f"results/{run_name}")
+    output_dir = os.path.join(base_path,f"checkpoints/{run_name}")
 
     if input_language=='zh':
         num_epochs = 10 
@@ -102,7 +102,7 @@ def train_text_to_text_model(
     )
 
     append_path = f"{input_language}_{target_language}_{training_strategy}.json"
-    write_dir = os.path.join(base_path,f"outs/{append_path}")
+    write_dir = os.path.join(base_path,f"outputs/{append_path}")
 
     def compute_metrics(pred):
         predictions, labels = pred.predictions, pred.label_ids
