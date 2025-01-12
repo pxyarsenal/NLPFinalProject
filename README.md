@@ -11,9 +11,9 @@
 - **outs**: Stores evaluation outputs and standard outputs, used for LLM-Eval.
 
 # Reproduction Instructions
-
-1. You need to download the dataset yourself. The dataset used is Tatoeba.
-2. Set up the environment:
+1. You can download `NLPFinalProject-main.zip` directly if `git clone` doesn't work.
+2. You need to download the dataset yourself. The dataset used is Tatoeba.
+3. Set up the environment:
     ```bash
     cd NLPFinalProject-main
     unzip peft.zip
