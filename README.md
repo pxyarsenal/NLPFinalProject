@@ -16,6 +16,7 @@
 2. Set up the environment:
     ```bash
     cd NLPFinalProject-main
+    unzip peft.zip
     pip install -r requirements.txt
     pip install -e peft
     ```
