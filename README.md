@@ -29,7 +29,7 @@
     ```bash
     python llm_eval.py
     ```
-    - You can modify the input to the `main` function in `llm_eval.py` to select the language for testing.
+    - You can modify the input to the `main` function in `llm_eval.py` to select the language for testing. You also need replace the `openai_api_key` to your own api keys.
 
 # Additional Environment Information
 
