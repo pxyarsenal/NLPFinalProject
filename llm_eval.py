@@ -178,4 +178,5 @@ def main(in_lang,tar_lang,filepath, outpath):
     print(f"AVG_FLUENCY: {total_score[0]/sum:05f},AVG_COHERENCE: {total_score[1]/sum:05f},AVG_RELEVANCE: {total_score[2]/sum:05f},AVG_ENGAGINGNESS: {total_score[3]/sum:05f} ",file=outs)
 
 if __name__ == "__main__":
-    main('zh','en',"/ceph/home/penshenyao/NLP/final/outs/zh_en_fine_tuning.json","/ceph/home/penshenyao/NLP/final/outs_llm/en_zh_finetune.txt")
+    #replace the absolute path below to your own
+    main('zh','en',"/ceph/home/penshenyao/NLP/final/outputs/zh_en_fine_tuning.json","/ceph/home/penshenyao/NLP/final/outs_llm/en_zh_finetune.txt")
