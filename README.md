@@ -20,7 +20,15 @@
     pip install -r requirements.txt
     pip install -e peft
     ```
-3. Conduct experiments:
+    If there is still something wrong with your `nltk` package, try the commands below:
+    ```bash
+    python
+    import nltk
+    nltk.download('wordnet')
+    nltk.download('punkt')  
+    nltk.download('omw-1.4')    
+    ```
+4. Conduct experiments:
     ```bash
     python train.py input_language='de' target_language='en' training_strategy='loraga'
     ```
