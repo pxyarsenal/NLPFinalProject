@@ -170,9 +170,23 @@ def train_text_to_text_model(
         with LoraGAContext(model=model, named_grad=named_grad):
             model = get_peft_model(model=model, peft_config=peft_config)
         
-        trainable_params, all_param = model.get_nb_trainable_parameters()
+        # trainable_params, all_param = model.get_nb_trainable_parameters()
         # print(model,f"\n\ntrainable rate: {trainable_params,trainable_params/all_param,trainable_params/(all_param+trainable_params)}")
         # save_loraga_model_init(model, save_dir=output_dir)
+    elif training_strategy == "lora":
+
+        peft_config = LoraConfig(
+            r=8, # lora rank
+            lora_alpha=32,  
+            target_modules=["q", "v", "k", "o"],  #"o_proj, "k_proj""
+            lora_dropout=0.1, 
+            bias="none"  
+        )
+        
+        model = get_peft_model(model, peft_config)
+
+        # For debug
+        model.print_trainable_parameters()
     trainable_params = sum(p.numel() for p in model.parameters() if p.requires_grad)
     all_params = sum(p.numel() for p in model.parameters() )
     print(model,f"\n\ntrainable rate: {trainable_params,trainable_params/all_params}")
@@ -194,20 +208,6 @@ def train_text_to_text_model(
         save_loraga_model_final(model, save_dir=output_dir)
         # Load the saved model like you would load a LoRA model
         model = PeftModel.from_pretrained(model, output_dir)
-    elif training_strategy == "lora":
-
-        peft_config = LoraConfig(
-            r=8, # lora rank
-            lora_alpha=32,  
-            target_modules=["q", "v", "k", "o"],  #"o_proj, "k_proj""
-            lora_dropout=0.1, 
-            bias="none"  
-        )
-        
-        model = get_peft_model(model, peft_config)
-
-        # For debug
-        model.print_trainable_parameters()
 
     return model
 
