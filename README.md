@@ -12,7 +12,7 @@
 
 # Reproduction Instructions
 1. You can download `NLPFinalProject-main.zip` directly if `git clone` doesn't work.
-2. You need to download the dataset yourself. The dataset used is Tatoeba.
+2. You need to download the dataset yourself. The dataset used is Tatoeba, whose link is `https://tatoeba.org/zh-cn/downloads`. Find the `Custom exports` label, choose source language and target language and then download.
 3. Set up the environment:
     ```bash
     cd NLPFinalProject-main
