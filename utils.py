@@ -208,7 +208,9 @@ def train_text_to_text_model(
         save_loraga_model_final(model, save_dir=output_dir)
         # Load the saved model like you would load a LoRA model
         model = PeftModel.from_pretrained(model, output_dir)
-
+    else:
+        model.save_pretrained(output_dir)
+    
     return model
 
     
