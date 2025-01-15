@@ -42,7 +42,7 @@ pip install -e peft
 ```
 
 # Dataset Preparation
-We conduct our experiment on the Tatoeba dataset. To prepare this dataset, please download the corresponding languages(German, Japanese and Chinese) from https://tatoeba.org/zh-cn/downloads. Find the *Custom Exports* label, choose source language and target language and download. The downloaded `.tsv` fiiles should be put in `./data/tatoeba` folder.
+We conduct our experiment on the Tatoeba dataset. To prepare this dataset, please download the corresponding languages(German, Japanese and Chinese) from https://tatoeba.org/zh-cn/downloads. Find the *Custom Exports* label, choose source language and target language and download. The downloaded `.tsv` files should be put in `./data/tatoeba` folder.
 
 # Run Our Code
 
